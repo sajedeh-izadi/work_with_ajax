@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                method: "GET",
+                url: "https://api.mycryptocommerce.com/api/v3/general/allProduct",
+                success: function (product) {
+                    for (let i = 0; i < product.data.length; i++) {
+                        var html = '<tr>' +
+                            '<td>' + product.data[i].baseAsset + '</td>' +
+                            '<td>' + product.data[i].baseAssetName + '</td>' +
+                            '<td>' + product.data[i].highPrice + '</td>' +
+                            '<td>' + product.data[i].lastPrice + '</td>' +
+                            '<td>' + product.data[i].lowPrice + '</td>' +
+                            '<td>' + product.data[i].marketName + '</td>' +
+                            '<td>' + product.data[i].priceChange + '</td>' +
+                            '<td>' + product.data[i].priceChangePercent + '</td>' +
+                            '<td>' + product.data[i].price_btc + '</td>' +
+                            '<td>' + product.data[i].price_irr + '</td>' +
+                            '<td>' + product.data[i].price_usd + '</td>' +
+                            '<td>' + product.data[i].quoteAsset + '</td>' +
+                            '<td>' + product.data[i].quoteAssetName + '</td>' +
+                            '<td>' + product.data[i].symbol + '</td>' +
+                            '</tr>';
+
+                        $('.products tr').first().after(html);
+                    }
+                }
+            });
+        });
+    </script>
+
+    <style>
+        table,
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+
+    <table class="products">
+        <tr>
+
+            <th>beseAsset</th>
+            <th>beseAssetName</th>
+            <th>highPrice</th>
+            <th>lastPrice</th>
+            <th>lowPrice</th>
+            <th>marketName</th>
+            <th>priceChange</th>
+            <th>priceChanePercent</th>
+            <th>price_btc</th>
+            <th>price_irr</th>
+            <th>price_usd</th>
+            <th>quoteAsset</th>
+            <th>quoteAssetName</th>
+            <th>Symbol</th>
+
+        </tr>
+    </table>
+
+</body>
+
+</html>
